@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Keine externen Bilddomains nötig (alle Bilder lokal in /public)
 };
 
 export default nextConfig;

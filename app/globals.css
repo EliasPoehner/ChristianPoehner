@@ -1,26 +1,63 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Farben */
+  --color-primary: #1a3a5c;
+  --color-primary-light: #2a5080;
+  --color-accent: #c8971e;
+  --color-accent-light: #e0b040;
+  --color-neutral-50: #f9f9f8;
+  --color-neutral-100: #f1f0ee;
+  --color-neutral-200: #e4e2de;
+  --color-neutral-400: #9e9b94;
+  --color-neutral-600: #5c5a55;
+  --color-neutral-800: #2c2b28;
+  --color-neutral-900: #1a1918;
+
+  /* Typografie */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    @apply bg-neutral-50 text-neutral-800 antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply text-neutral-900;
+  }
+
+  ::selection {
+    background-color: #e0b040;
+    color: #1a1918;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-[#1a3a5c] px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-[#2a5080] focus-visible:outline-2 focus-visible:outline-offset-2;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border-2 border-[#1a3a5c] px-6 py-3 text-sm font-semibold text-[#1a3a5c] transition-all duration-200 hover:bg-[#1a3a5c] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2;
+  }
+
+  .card {
+    @apply rounded-xl bg-white p-6 shadow-sm transition-shadow duration-200 hover:shadow-md;
+  }
+
+  .form-input {
+    @apply w-full rounded-lg border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-800 placeholder:text-neutral-400 transition-colors duration-200 focus:border-[#1a3a5c] focus:outline-none focus:ring-2 focus:ring-[#1a3a5c]/20;
+  }
+
+  .form-label {
+    @apply mb-1.5 block text-sm font-medium text-neutral-700;
+  }
 }
