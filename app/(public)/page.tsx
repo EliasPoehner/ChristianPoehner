@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Hero from "@/components/startseite/Hero";
 import ShortIntro from "@/components/startseite/ShortIntro";
+import UeberMichTeaser from "@/components/startseite/UeberMichTeaser";
+import StandpunkteTeaser from "@/components/startseite/StandpunkteTeaser";
 import ContactLinks from "@/components/startseite/ContactLinks";
 import { meta } from "@/content/meta";
 
@@ -47,6 +49,8 @@ export default function Startseite() {
       />
       <Hero />
       <ShortIntro />
+      <UeberMichTeaser />
+      <StandpunkteTeaser />
       <ContactLinks />
     </>
   );

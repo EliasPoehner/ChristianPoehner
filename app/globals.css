@@ -1,22 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-  /* Farben */
-  --color-primary: #1a3a5c;
-  --color-primary-light: #2a5080;
-  --color-accent: #c8971e;
-  --color-accent-light: #e0b040;
-  --color-neutral-50: #f9f9f8;
-  --color-neutral-100: #f1f0ee;
-  --color-neutral-200: #e4e2de;
-  --color-neutral-400: #9e9b94;
-  --color-neutral-600: #5c5a55;
-  --color-neutral-800: #2c2b28;
-  --color-neutral-900: #1a1918;
+  /* Design System – "Digital Architect" */
+  --color-primary: #041627;
+  --color-primary-container: #1a2b3c;
+  --color-on-primary: #ffffff;
 
-  /* Typografie */
+  --color-secondary: #006b5f;
+  --color-secondary-container: #76f4e0;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #006f63;
+
+  --color-surface: #f7f9fe;
+  --color-surface-low: #f1f4f9;
+  --color-surface-container: #ebeef3;
+  --color-surface-high: #e5e8ed;
+  --color-surface-highest: #dfe3e8;
+  --color-surface-white: #ffffff;
+
+  --color-on-surface: #181c20;
+  --color-on-surface-muted: #44474c;
+  --color-outline-variant: #c4c6cd;
+
+  /* Fonts */
+  --font-headline: var(--font-jakarta), "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
 }
 
 @layer base {
@@ -25,39 +33,62 @@
   }
 
   body {
-    @apply bg-neutral-50 text-neutral-800 antialiased;
+    @apply bg-surface text-on-surface antialiased;
+    font-family: var(--font-sans);
   }
 
   h1,
   h2,
   h3 {
-    @apply text-neutral-900;
+    font-family: var(--font-headline);
+    @apply text-primary;
   }
 
   ::selection {
-    background-color: #e0b040;
-    color: #1a1918;
+    background-color: #76f4e0;
+    color: #041627;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-[#1a3a5c] px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-[#2a5080] focus-visible:outline-2 focus-visible:outline-offset-2;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold text-on-primary transition-all duration-200 hover:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2;
+    background: linear-gradient(135deg, #041627, #1a2b3c);
+    font-family: var(--font-headline);
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg border-2 border-[#1a3a5c] px-6 py-3 text-sm font-semibold text-[#1a3a5c] transition-all duration-200 hover:bg-[#1a3a5c] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border-2 border-primary px-6 py-3 text-sm font-semibold text-primary transition-all duration-200 hover:bg-primary hover:text-on-primary focus-visible:outline-2 focus-visible:outline-offset-2;
+    font-family: var(--font-headline);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-secondary px-6 py-3 text-sm font-semibold text-on-secondary transition-all duration-200 hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2;
+    font-family: var(--font-headline);
   }
 
   .card {
-    @apply rounded-xl bg-white p-6 shadow-sm transition-shadow duration-200 hover:shadow-md;
+    @apply rounded-xl bg-surface-white p-6 shadow-sm transition-all duration-300 hover:shadow-md;
   }
 
   .form-input {
-    @apply w-full rounded-lg border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-800 placeholder:text-neutral-400 transition-colors duration-200 focus:border-[#1a3a5c] focus:outline-none focus:ring-2 focus:ring-[#1a3a5c]/20;
+    @apply w-full rounded-lg border-0 bg-surface-highest px-4 py-3 text-sm text-on-surface placeholder:text-on-surface-muted transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-secondary/50;
   }
 
   .form-label {
-    @apply mb-1.5 block text-sm font-medium text-neutral-700;
+    @apply mb-1.5 block text-sm font-medium text-on-surface-muted;
   }
+}
+
+.grid-pattern {
+  background-image: radial-gradient(circle, #c4c6cd 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.15;
+}
+
+.blueprint-lines {
+  background-image: linear-gradient(to right, #c4c6cd 1px, transparent 1px),
+    linear-gradient(to bottom, #c4c6cd 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.05;
 }

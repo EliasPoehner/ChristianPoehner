@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,9 +8,10 @@ const inter = Inter({
   display: "swap",
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -37,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="de"
-      className={`${inter.variable} ${playfair.variable} h-full`}
+      className={`${inter.variable} ${jakarta.variable} h-full`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

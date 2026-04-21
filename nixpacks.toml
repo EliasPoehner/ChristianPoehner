@@ -1,5 +1,5 @@
 [phases.build]
-cmds = ["npm run build"]
+cmds = ["NODE_OPTIONS='--max-old-space-size=512' npm run build"]
 
 [start]
 cmd = "npm run start"

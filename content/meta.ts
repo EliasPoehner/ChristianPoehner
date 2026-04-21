@@ -1,11 +1,11 @@
 export const meta = {
   name: "Christian Pöhner",
-  nameShort: "Chr. Pöhner",
+  nameShort: "Chris Pöhner",
   role: "Stadtrat",
   city: "Landshut",
   cityFull: "Landshut (Niederbayern)",
   tagline: "Stadtrat. Unternehmer. Bürger.",
-  email: "chris@poehni.de",
+  email: "christian.poehner@zukunft-landshut.de",
   address: {
     street: "Liebigstraße 3a",
     zip: "84030",
@@ -20,6 +20,9 @@ export const meta = {
     },
     facebook: {
       url: "https://www.facebook.com/people/ChristianPoehnerla/61582259731854/",
+    },
+    linkedin: {
+      url: "https://de.linkedin.com/in/christianpoehner",
     },
   },
   siteUrl: "https://poehner.de",
