@@ -1,8 +1,12 @@
 import type { NextConfig } from "next";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 const nextConfig: NextConfig = {
-  // Keine externen Bilddomains nötig (alle Bilder lokal in /public)
-  basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
+  basePath,
+  // assetPrefix must match basePath so browsers can load static files
+  // even when a reverse proxy strips the path prefix before forwarding
+  assetPrefix: basePath,
   output: "standalone",
 };
 

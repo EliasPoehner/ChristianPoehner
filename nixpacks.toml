@@ -1,4 +1,5 @@
 [phases.build]
+# Set NEXT_PUBLIC_BASE_PATH via platform env vars if deploying to a subpath
 cmds = ["NODE_OPTIONS='--max-old-space-size=512' npm run build"]
 
 [start]
