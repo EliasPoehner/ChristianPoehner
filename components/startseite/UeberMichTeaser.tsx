@@ -9,7 +9,7 @@ export default function UeberMichTeaser() {
         {/* Bild – links */}
         <div className="md:col-span-5 order-2 md:order-1">
           <div className="relative">
-            <div className="aspect-square rounded-2xl overflow-hidden shadow-xl">
+            <div className="relative aspect-square rounded-2xl overflow-hidden shadow-xl">
               <Image
                 src="/images/ChristianPoehner-BuntesHemd.jpg"
                 alt="Christian Pöhner"
