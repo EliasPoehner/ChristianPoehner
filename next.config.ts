@@ -7,7 +7,6 @@ const nextConfig: NextConfig = {
   // assetPrefix must match basePath so browsers can load static files
   // even when a reverse proxy strips the path prefix before forwarding
   assetPrefix: basePath,
-  output: "standalone",
 };
 
 export default nextConfig;
