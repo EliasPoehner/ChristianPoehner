@@ -1,6 +1,10 @@
 [phases.build]
 # Set NEXT_PUBLIC_BASE_PATH via platform env vars if deploying to a subpath
-cmds = ["NODE_OPTIONS='--max-old-space-size=512' npm run build"]
+cmds = [
+  "NODE_OPTIONS='--max-old-space-size=512' npm run build",
+  "cp -r .next/static .next/standalone/.next/static",
+  "cp -r public .next/standalone/public"
+]
 
 [start]
-cmd = "npm run start"
+cmd = "node .next/standalone/server.js"
