@@ -31,14 +31,14 @@ const CheckItem = ({ text }: { text: string }) => (
 
 export default function StandpunkteThemen() {
   return (
-    <section className="px-6 lg:px-12 max-w-screen-xl mx-auto pb-20 space-y-8">
+    <section className="px-4 md:px-6 lg:px-12 max-w-screen-xl mx-auto pb-12 md:pb-20 space-y-6 md:space-y-8">
 
       {/* Reihe 1: Digitalisierung (groß, 7-col) + Visual (5-col) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
         {/* Digitalisierung – Hauptkarte */}
         <div
-          className="lg:col-span-7 p-8 md:p-10 rounded-2xl flex flex-col justify-between"
+          className="lg:col-span-7 p-6 md:p-10 rounded-2xl flex flex-col justify-between"
           style={{
             background: "#f1f4f9",
             borderLeft: "4px solid #006b5f",
@@ -96,7 +96,7 @@ export default function StandpunkteThemen() {
 
         {/* Visual-Block */}
         <div
-          className="lg:col-span-5 rounded-2xl overflow-hidden min-h-[240px] flex flex-col justify-end p-8 relative"
+          className="hidden lg:flex lg:col-span-5 rounded-2xl overflow-hidden min-h-[240px] flex-col justify-end p-8 relative"
           style={{ background: "linear-gradient(135deg, #041627 0%, #006b5f 100%)" }}
         >
           <div className="absolute inset-0 grid-pattern opacity-20 pointer-events-none" />

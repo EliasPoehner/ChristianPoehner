@@ -48,3 +48,22 @@ Build-Artefakte: `.next/standalone` + `.next/static` + `public/` werden ins Runn
 ```
 SMTP_HOST, SMTP_PORT, SMTP_SECURE, SMTP_USER, SMTP_PASS, SMTP_FROM, SMTP_TO
 ```
+
+## Mobile Design System (ab April 2026)
+
+Die Mobile-Ansicht basiert auf einem eigenständigen "Digital Architect"-Layout.
+Design-Referenz: `stitch_politische_profilseite/Mobil*/` (HTML + screen.png pro Seite)
+
+### Kernprinzipien Mobile
+- **Desktop unberührt** – alle mobilen Styles mit `md:` prefixed Tailwind-Klassen abgegrenzt
+- **Bottom Navigation** (`components/layout/BottomNav.tsx`) – 4 Tabs, nur `< md` sichtbar
+- **Glassmorphismus Header** – `bg-white/70 backdrop-blur-xl` auf Mobile
+- **Hero-Overlay-Pattern** – Portrait-Bild 4:5 + Gradient `primary/80 → transparent` + Text-Overlay
+- **Card-Akzent** – `border-l-4 border-secondary` auf Policy-Cards (Mobile)
+- **Dunkler Formular-Container** – KontaktForm auf Mobile: `bg-primary` (navy), weiße Inputs
+- **Bento-Grid** – WerteZiele: 1 große + 2 kleine Cards (2-spaltig) auf Mobile
+- **Karriere-Timeline** – nur Mobile (`md:hidden`), vertikale Linie + Kreise
+
+### Layout-Padding Mobile
+- `<main>`: `pb-16 md:pb-0` (Platz für fixe Bottom-Nav)
+- Horizontales Padding: `px-6` (24px)

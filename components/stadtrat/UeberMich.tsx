@@ -3,9 +3,59 @@ import Image from "next/image";
 export default function UeberMich() {
   return (
     <>
-      {/* Hero Editorial Section */}
+      {/* ── Mobile Hero: Portrait mit Gradient-Overlay ── */}
+      <div className="md:hidden px-4 pt-4 pb-0">
+        <div className="relative overflow-hidden rounded-3xl shadow-xl" style={{ aspectRatio: "4/5" }}>
+          <Image
+            src="/images/christian-poehner.png"
+            alt="Christian Pöhner, Stadtrat Landshut"
+            fill
+            className="object-cover object-top"
+            priority
+            sizes="calc(100vw - 32px)"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/20 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 p-6">
+            <span
+              className="inline-block px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-3 bg-secondary text-on-secondary"
+              style={{ fontFamily: "var(--font-headline)" }}
+            >
+              Stadtrat · Unternehmer · Bürger
+            </span>
+            <h1
+              className="font-extrabold text-4xl text-white leading-tight"
+              style={{ fontFamily: "var(--font-headline)" }}
+            >
+              Aus dem Rottal –<br />
+              <span style={{ color: "#76f4e0" }}>für Landshut.</span>
+            </h1>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Mobile Bio-Text ── */}
+      <div className="md:hidden px-6 py-8">
+        <p className="text-on-surface-muted text-base leading-relaxed mb-6">
+          Schreiner, Soldat, Informatiker, Unternehmer, Vater – und seit
+          2026 Stadtrat. Mein Weg hat mich gelehrt, was es bedeutet, etwas
+          aufzubauen. Diese Erfahrung bringe ich täglich in meine Arbeit
+          für Landshut ein.
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {["Unternehmer", "Familienvater", "Ehrenamtlicher", "Stadtrat"].map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full bg-surface-container px-4 py-1.5 text-xs font-semibold text-on-surface-muted border border-outline-variant/40"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Desktop Hero ── */}
       <section
-        className="relative overflow-hidden bg-surface pt-16 pb-12"
+        className="hidden md:block relative overflow-hidden bg-surface pt-16 pb-12"
         style={{
           backgroundImage:
             "radial-gradient(circle at 1px 1px, rgba(196,198,205,0.15) 1px, transparent 0)",
@@ -71,12 +121,12 @@ export default function UeberMich() {
       </section>
 
       {/* Pullquote Section */}
-      <section className="py-24 bg-primary text-on-primary">
+      <section className="py-16 md:py-24 bg-primary text-on-primary">
         <div className="max-w-4xl mx-auto px-8 text-center">
-          <div className="text-6xl text-secondary mb-8 font-serif leading-none select-none">
+          <div className="text-6xl text-secondary mb-6 md:mb-8 font-serif leading-none select-none">
             &ldquo;
           </div>
-          <blockquote className="font-headline text-2xl md:text-3xl font-bold leading-snug mb-10 italic">
+          <blockquote className="font-headline text-xl md:text-3xl font-bold leading-snug mb-8 md:mb-10 italic">
             Ich sehe Politik nicht als Selbstzweck. Sie muss dort ankommen, wo
             das Leben stattfindet – in unseren Stadtteilen, Schulen und
             Betrieben.
@@ -91,25 +141,25 @@ export default function UeberMich() {
       </section>
 
       {/* Bento Content Modules */}
-      <section className="py-24 bg-surface-low">
+      <section className="py-12 md:py-24 bg-surface-low">
         <div className="max-w-screen-xl mx-auto px-6 md:px-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {/* Der Unternehmer */}
-            <div className="md:col-span-2 bg-surface-white p-10 rounded-xl shadow-sm flex flex-col md:flex-row gap-8 items-start">
-              <div className="w-full md:w-1/3 aspect-square rounded-lg overflow-hidden shrink-0 relative">
+            <div className="md:col-span-2 bg-surface-white p-6 md:p-10 rounded-2xl shadow-sm flex flex-col md:flex-row gap-6 md:gap-8 items-start border-l-4 border-secondary md:border-l-0">
+              <div className="w-24 h-24 md:w-full md:aspect-square md:h-auto rounded-xl overflow-hidden shrink-0 relative">
                 <Image
                   src="/images/GesichtsPortrait.jpg"
                   alt="Christian Pöhner"
                   fill
                   className="object-cover object-top"
-                  sizes="(max-width: 768px) 100vw, 20vw"
+                  sizes="(max-width: 768px) 96px, 20vw"
                 />
               </div>
               <div>
-                <h3 className="font-headline font-bold text-2xl text-primary mb-4">
+                <h3 className="font-headline font-bold text-xl md:text-2xl text-primary mb-3 md:mb-4">
                   Der Unternehmer
                 </h3>
-                <p className="text-on-surface-muted leading-relaxed">
+                <p className="text-on-surface-muted leading-relaxed text-sm md:text-base">
                   Nach Ausbildung zum Schreiner und sechs Jahren Bundeswehr
                   schlug ich eine neue Richtung ein: Umschulung zum
                   Fachinformatiker, dann die Gründung von{" "}
@@ -122,13 +172,13 @@ export default function UeberMich() {
             </div>
 
             {/* Der Familienvater */}
-            <div className="bg-secondary text-on-secondary p-10 rounded-xl shadow-sm flex flex-col justify-between">
-              <span className="text-4xl mb-6 select-none">👨‍👩‍👧‍👦</span>
+            <div className="bg-secondary text-on-secondary p-6 md:p-10 rounded-2xl shadow-sm flex flex-col justify-between">
+              <span className="text-4xl mb-4 md:mb-6 select-none">👨‍👩‍👧‍👦</span>
               <div>
-                <h3 className="font-headline font-bold text-2xl mb-4">
+                <h3 className="font-headline font-bold text-xl md:text-2xl mb-3 md:mb-4">
                   Der Familienvater
                 </h3>
-                <p className="text-on-secondary/80 leading-relaxed">
+                <p className="text-on-secondary/80 leading-relaxed text-sm md:text-base">
                   Als Vater von drei Kindern weiß ich, worauf es wirklich
                   ankommt: gute Schulen, sichere Stadtteile, eine lebendige
                   Gemeinschaft. Mein politisches Engagement ist mein
@@ -138,18 +188,18 @@ export default function UeberMich() {
             </div>
 
             {/* Vision */}
-            <div className="md:col-span-3 bg-surface-highest p-10 rounded-xl relative overflow-hidden">
+            <div className="md:col-span-3 bg-surface-highest p-6 md:p-10 rounded-2xl relative overflow-hidden">
               <div className="relative z-10 max-w-2xl">
-                <h3 className="font-headline font-bold text-3xl text-primary mb-6">
+                <h3 className="font-headline font-bold text-2xl md:text-3xl text-primary mb-4 md:mb-6">
                   Meine Vision für Landshut
                 </h3>
-                <p className="text-on-surface-muted text-lg leading-relaxed mb-8">
+                <p className="text-on-surface-muted text-base md:text-lg leading-relaxed mb-6 md:mb-8">
                   Eine Stadt, die ihre Bürgerinnen und Bürger ernst nimmt.
                   Transparente Entscheidungen, moderne Verwaltung und echte
                   Bürgerbeteiligung. Kein leeres Versprechen – sondern ein Plan,
                   den wir gemeinsam umsetzen.
                 </p>
-                <div className="flex flex-wrap gap-6">
+                <div className="flex flex-wrap gap-4 md:gap-6">
                   {[
                     "Digitale Verwaltung",
                     "Bürgerbeteiligung",
@@ -179,7 +229,6 @@ export default function UeberMich() {
                   ))}
                 </div>
               </div>
-              {/* decorative background text */}
               <div
                 aria-hidden="true"
                 className="absolute right-8 top-1/2 -translate-y-1/2 font-headline font-extrabold text-[10rem] leading-none text-primary/5 select-none hidden md:block"
@@ -192,13 +241,13 @@ export default function UeberMich() {
       </section>
 
       {/* Timeline – Werdegang */}
-      <section className="py-24 bg-surface">
-        <div className="max-w-3xl mx-auto px-8">
-          <div className="text-center mb-20">
+      <section className="py-16 md:py-24 bg-surface">
+        <div className="max-w-3xl mx-auto px-6 md:px-8">
+          <div className="text-center mb-12 md:mb-20">
             <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-secondary">
               Mein Weg
             </p>
-            <h2 className="font-headline font-extrabold text-4xl text-primary mb-4">
+            <h2 className="font-headline font-extrabold text-3xl md:text-4xl text-primary mb-4">
               Werdegang
             </h2>
             <p className="text-on-surface-muted">
@@ -206,8 +255,70 @@ export default function UeberMich() {
             </p>
           </div>
 
-          <div className="relative">
-            {/* Vertical line – fades at top and bottom */}
+          {/* Mobile Timeline: Flex-Layout für exakte Ausrichtung */}
+          <div className="md:hidden relative">
+            {/* Connector-Linie: zentriert in der 40px Dot-Spalte (Mitte = 20px) */}
+            <div
+              className="absolute top-5 bottom-5 w-0.5"
+              style={{
+                left: "19px",
+                background: "linear-gradient(to bottom, transparent 0%, rgba(196,198,205,0.45) 8%, rgba(196,198,205,0.45) 92%, transparent 100%)",
+              }}
+            />
+            {[
+              {
+                period: "Bis 2000",
+                title: "Schreiner & Bundeswehr",
+                desc: "Ausbildung zum Schreiner im Rottal, anschließend sechs Jahre Dienst bei der Bundeswehr. Teamarbeit, Disziplin und Verantwortung wurden zur zweiten Natur.",
+                active: false,
+              },
+              {
+                period: "2000 – 2010",
+                title: "Fachinformatiker",
+                desc: "Umschulung zum Fachinformatiker – eine bewusste Entscheidung für die Zukunft. Erste Erfahrungen in der IT-Branche und die Grundlage für den nächsten Schritt.",
+                active: false,
+              },
+              {
+                period: "2010 – Heute",
+                title: "Geschäftsführer PZ Systeme",
+                desc: "Gründung und Aufbau des eigenen IT-Unternehmens PZ Systeme – bis heute. Verlässlicher Partner für Unternehmen in der Region, von Infrastruktur bis IT-Security.",
+                active: true,
+              },
+              {
+                period: "2026 – Heute",
+                title: "Stadtrat Landshut",
+                desc: "Wahl in den Landshuter Stadtrat – parallel zur Unternehmensführung. Engagement für digitale Verwaltung, soziales Miteinander und nachhaltige Stadtentwicklung.",
+                active: true,
+              },
+            ].map((item, i) => (
+              <div key={i} className="flex gap-4 mb-8 last:mb-0">
+                {/* Dot-Spalte: w-10 = 40px, Dot zentriert → Mitte bei 20px */}
+                <div className="flex-shrink-0 w-10 flex justify-center pt-1">
+                  <div
+                    className={`w-3.5 h-3.5 rounded-full border-[3px] border-surface relative z-10 ${item.active ? "bg-secondary" : "bg-outline-variant"}`}
+                  />
+                </div>
+                {/* Inhalt */}
+                <div className="flex-1">
+                  <span
+                    className="text-xs font-bold tracking-widest uppercase mb-1 block"
+                    style={{ color: item.active ? "#006b5f" : "#74777d" }}
+                  >
+                    {item.period}
+                  </span>
+                  <h4 className="font-headline font-bold text-lg text-primary mb-1">
+                    {item.title}
+                  </h4>
+                  <p className="text-sm leading-relaxed text-on-surface-muted">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop Timeline: mittig mit alternierend links/rechts */}
+          <div className="hidden md:block relative">
             <div
               className="absolute left-1/2 -translate-x-px top-0 bottom-0 w-px"
               style={{ background: "linear-gradient(to bottom, transparent 0%, #c4c6cd66 12%, #c4c6cd66 88%, transparent 100%)" }}
@@ -262,26 +373,12 @@ export default function UeberMich() {
 
               return (
                 <div key={i} className="relative flex justify-between items-center mb-16 w-full">
-                  {/* Left column */}
-                  <div className="w-5/12 pr-10 hidden md:flex md:items-center md:justify-end">
+                  <div className="w-5/12 pr-10 flex items-center justify-end">
                     {item.align === "right" ? periodLabel : card}
                   </div>
-
-                  {/* Dot */}
                   <div className={`absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-4 border-surface z-10 ${item.accent}`} />
-
-                  {/* Right column */}
-                  <div className="w-full md:w-5/12 md:pl-10 pl-10">
-                    {/* Mobile: period always above card */}
-                    <div className="md:hidden text-xs font-bold tracking-widest text-on-surface-muted uppercase mb-2">
-                      {item.period}
-                    </div>
-                    {/* Desktop: show card or period label depending on alignment */}
-                    <div className="hidden md:block">
-                      {item.align === "right" ? card : periodLabel}
-                    </div>
-                    {/* Mobile: always show card */}
-                    <div className="md:hidden">{card}</div>
+                  <div className="w-5/12 pl-10">
+                    {item.align === "right" ? card : periodLabel}
                   </div>
                 </div>
               );
@@ -291,17 +388,17 @@ export default function UeberMich() {
       </section>
 
       {/* Ehrenamt */}
-      <section className="py-16 bg-surface-low border-t border-outline-variant/30">
+      <section className="py-12 md:py-16 bg-surface-low border-t border-outline-variant/30">
         <div className="max-w-screen-xl mx-auto px-6 md:px-16">
-          <div className="text-center mb-12">
+          <div className="text-center mb-10 md:mb-12">
             <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-secondary">
               Ehrenamt
             </p>
-            <h2 className="font-headline font-extrabold text-3xl text-primary">
+            <h2 className="font-headline font-extrabold text-2xl md:text-3xl text-primary">
               Engagement über die Politik hinaus
             </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 max-w-3xl mx-auto">
             {[
               {
                 icon: "🤝",

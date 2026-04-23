@@ -5,7 +5,11 @@ import { sendContactForm, type ContactFormState } from "@/lib/contact-action";
 
 const initialState: ContactFormState = { success: false };
 
-export default function KontaktForm() {
+interface KontaktFormProps {
+  dark?: boolean;
+}
+
+export default function KontaktForm({ dark = false }: KontaktFormProps) {
   const [state, formAction, isPending] = useActionState(sendContactForm, initialState);
   const formRef = useRef<HTMLFormElement>(null);
   const timestampRef = useRef<HTMLInputElement>(null);
@@ -23,12 +27,12 @@ export default function KontaktForm() {
   }, [state.success]);
 
   const inputStyle = {
-    background: "#f1f4f9",
+    background: dark ? "rgba(255,255,255,0.08)" : "#f1f4f9",
     border: "none",
     borderRadius: "0.5rem",
     padding: "0.75rem 1rem",
     fontSize: "0.875rem",
-    color: "#181c20",
+    color: dark ? "#ffffff" : "#181c20",
     outline: "none",
     width: "100%",
     transition: "box-shadow 0.2s",
@@ -36,11 +40,15 @@ export default function KontaktForm() {
 
   const labelStyle = {
     display: "block",
-    fontSize: "0.875rem",
+    fontSize: "0.75rem",
     fontWeight: 600,
-    color: "#44474c",
+    color: dark ? "#8192a7" : "#44474c",
     marginBottom: "0.4rem",
+    textTransform: dark ? "uppercase" as const : undefined,
+    letterSpacing: dark ? "0.1em" : undefined,
   } as React.CSSProperties;
+
+  const focusRing = dark ? "0 0 0 2px #006b5f, 0 0 8px rgba(0,107,95,0.3)" : "0 0 0 2px #006b5f";
 
   return (
     <form ref={formRef} action={formAction} className="space-y-5">
@@ -53,7 +61,7 @@ export default function KontaktForm() {
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" style={labelStyle}>
-            Name <span className="text-red-500">*</span>
+            Name <span className="text-red-400">*</span>
           </label>
           <input
             id="name"
@@ -63,13 +71,13 @@ export default function KontaktForm() {
             autoComplete="name"
             placeholder="Max Mustermann"
             style={inputStyle}
-            onFocus={(e) => (e.currentTarget.style.boxShadow = "0 0 0 2px #006b5f")}
+            onFocus={(e) => (e.currentTarget.style.boxShadow = focusRing)}
             onBlur={(e) => (e.currentTarget.style.boxShadow = "none")}
           />
         </div>
         <div>
           <label htmlFor="email" style={labelStyle}>
-            E-Mail <span className="text-red-500">*</span>
+            E-Mail <span className="text-red-400">*</span>
           </label>
           <input
             id="email"
@@ -79,7 +87,7 @@ export default function KontaktForm() {
             autoComplete="email"
             placeholder="ihre@email.de"
             style={inputStyle}
-            onFocus={(e) => (e.currentTarget.style.boxShadow = "0 0 0 2px #006b5f")}
+            onFocus={(e) => (e.currentTarget.style.boxShadow = focusRing)}
             onBlur={(e) => (e.currentTarget.style.boxShadow = "none")}
           />
         </div>
@@ -88,13 +96,16 @@ export default function KontaktForm() {
       {/* Betreff */}
       <div>
         <label htmlFor="betreff" style={labelStyle}>
-          Betreff <span style={{ color: "#74777d", fontSize: "0.75rem", fontWeight: 400 }}>(optional)</span>
+          Betreff{" "}
+          <span style={{ color: dark ? "#8192a7" : "#74777d", fontSize: "0.75rem", fontWeight: 400, textTransform: "none", letterSpacing: "normal" }}>
+            (optional)
+          </span>
         </label>
         <select
           id="betreff"
           name="betreff"
           style={{ ...inputStyle, appearance: "none", cursor: "pointer" }}
-          onFocus={(e) => (e.currentTarget.style.boxShadow = "0 0 0 2px #006b5f")}
+          onFocus={(e) => (e.currentTarget.style.boxShadow = focusRing)}
           onBlur={(e) => (e.currentTarget.style.boxShadow = "none")}
         >
           <option value="">Bitte wählen…</option>
@@ -110,7 +121,7 @@ export default function KontaktForm() {
       {/* Nachricht */}
       <div>
         <label htmlFor="nachricht" style={labelStyle}>
-          Nachricht <span className="text-red-500">*</span>
+          Nachricht <span className="text-red-400">*</span>
         </label>
         <textarea
           id="nachricht"
@@ -119,7 +130,7 @@ export default function KontaktForm() {
           rows={6}
           placeholder="Wie kann ich Sie unterstützen?"
           style={{ ...inputStyle, resize: "none" }}
-          onFocus={(e) => (e.currentTarget.style.boxShadow = "0 0 0 2px #006b5f")}
+          onFocus={(e) => (e.currentTarget.style.boxShadow = focusRing)}
           onBlur={(e) => (e.currentTarget.style.boxShadow = "none")}
         />
       </div>
@@ -134,13 +145,22 @@ export default function KontaktForm() {
           className="mt-0.5 h-4 w-4 flex-shrink-0 rounded"
           style={{ accentColor: "#006b5f" }}
         />
-        <label htmlFor="dsgvo" className="text-sm text-on-surface-muted">
+        <label
+          htmlFor="dsgvo"
+          className="text-sm"
+          style={{ color: dark ? "#8192a7" : "#44474c" }}
+        >
           Ich habe die{" "}
-          <a href="/datenschutz" className="underline hover:text-secondary" target="_blank">
+          <a
+            href="/datenschutz"
+            className="underline hover:text-secondary"
+            style={{ color: dark ? "#76f4e0" : undefined }}
+            target="_blank"
+          >
             Datenschutzerklärung
           </a>{" "}
           gelesen und stimme der Verarbeitung meiner Daten zu.{" "}
-          <span className="text-red-500">*</span>
+          <span className="text-red-400">*</span>
         </label>
       </div>
 
@@ -163,7 +183,12 @@ export default function KontaktForm() {
         <button
           type="submit"
           disabled={isPending}
-          className="btn-secondary px-10 py-4 text-base disabled:opacity-60 disabled:cursor-not-allowed flex items-center gap-3"
+          className={`${dark ? "" : "btn-secondary"} px-10 py-4 text-base disabled:opacity-60 disabled:cursor-not-allowed flex items-center gap-3 w-full justify-center rounded-lg font-semibold transition-all duration-200 hover:opacity-90`}
+          style={dark ? {
+            background: "linear-gradient(135deg, #006b5f, #00a593)",
+            color: "#ffffff",
+            fontFamily: "var(--font-headline)",
+          } : undefined}
         >
           {isPending ? "Wird gesendet…" : (
             <>
