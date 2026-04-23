@@ -98,7 +98,7 @@ export default function UeberMich() {
             <div className="md:col-span-2 bg-surface-white p-10 rounded-xl shadow-sm flex flex-col md:flex-row gap-8 items-start">
               <div className="w-full md:w-1/3 aspect-square rounded-lg overflow-hidden shrink-0 relative">
                 <Image
-                  src="/images/GesichtsPoträ.jpg"
+                  src="/images/GesichtsPortrait.jpg"
                   alt="Christian Pöhner"
                   fill
                   className="object-cover object-top"
