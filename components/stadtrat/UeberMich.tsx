@@ -146,7 +146,7 @@ export default function UeberMich() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {/* Der Unternehmer */}
             <div className="md:col-span-2 bg-surface-white p-6 md:p-10 rounded-2xl shadow-sm flex flex-col md:flex-row gap-6 md:gap-8 items-start border-l-4 border-secondary md:border-l-0">
-              <div className="w-24 h-24 md:w-full md:aspect-square md:h-auto rounded-xl overflow-hidden shrink-0 relative">
+              <div className="w-24 h-24 md:w-48 md:h-48 rounded-xl overflow-hidden shrink-0 relative">
                 <Image
                   src="/images/GesichtsPortrait.jpg"
                   alt="Christian Pöhner"
