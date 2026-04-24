@@ -43,3 +43,6 @@ CLAUDE.md
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Design-Referenz (lokale Mockups, kein Produktionscode)
+/stitch_politische_profilseite

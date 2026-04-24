@@ -1,6 +1,7 @@
 export const meta = {
   name: "Christian Pöhner",
-  nameShort: "Chris Pöhner",
+  nameShort: "Christian Pöhner",
+  nameMobile: "Pöhner",
   role: "Stadtrat",
   city: "Landshut",
   cityFull: "Landshut (Niederbayern)",

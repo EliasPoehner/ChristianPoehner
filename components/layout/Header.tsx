@@ -14,48 +14,41 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header
-      className="sticky top-0 z-50 shadow-sm"
-      style={{ background: "rgba(247, 249, 254, 0.75)", backdropFilter: "blur(24px)" }}
-    >
-      <div className="mx-auto flex max-w-screen-xl items-center justify-between px-6 h-16 md:h-20 lg:px-12">
+    <header className="sticky top-0 w-full z-50 bg-slate-50/70 backdrop-blur-2xl shadow-sm">
+      <div className="flex justify-between items-center px-8 md:px-16 h-20 w-full max-w-screen-2xl mx-auto">
         {/* Logo */}
         <Link
           href="/"
-          className="font-headline font-extrabold text-xl tracking-tight text-primary hover:text-secondary transition-colors duration-200"
-          style={{ fontFamily: "var(--font-headline)" }}
+          className="font-headline font-extrabold text-xl tracking-tighter text-slate-950"
         >
-          {meta.nameShort}
+          <span className="hidden md:inline">{meta.nameShort}</span>
+          <span className="md:hidden">{meta.nameMobile}</span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-all duration-200 px-3 py-2 rounded-lg ${
+              className={`font-body text-sm transition-all ${
                 pathname === link.href
                   ? "text-secondary font-bold border-b-2 border-secondary pb-1"
-                  : "text-on-surface-muted hover:text-primary hover:bg-surface-low"
+                  : "text-slate-600 hover:text-slate-950 font-medium"
               }`}
             >
               {link.label}
             </Link>
           ))}
-          <Link href="/kontakt" className="btn-primary text-sm px-5 py-2.5">
-            Mitmachen
-          </Link>
         </nav>
 
-        {/* Mobile Avatar – navigation via BottomNav */}
-        <div
-          className="flex items-center justify-center w-9 h-9 rounded-full md:hidden text-xs font-bold text-on-secondary select-none"
-          style={{ background: "#006b5f" }}
-          aria-hidden="true"
+        {/* Mitmachen Button – always visible */}
+        <Link
+          href="/kontakt"
+          className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-lg font-headline font-bold text-sm hover:scale-95 active:scale-90 transition-transform"
         >
-          CP
-        </div>
+          Mitmachen
+        </Link>
       </div>
     </header>
   );
